@@ -25,7 +25,7 @@ const CreatePostForm = () => {
     formData.append('description', description);
     formData.append('postimage', postimage);
 
-    fetch('http://localhost:8081/posts', {
+    fetch('https://node-instacloneserver.onrender.com/posts', {
       method: 'POST',
       body: formData
     })
