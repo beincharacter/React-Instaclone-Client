@@ -1,0 +1,18 @@
+.landing-main-container, h1 {
+    display: inline;
+    
+  }
+  
+  .landing-main-container > .landing-img > img {
+    width: 50%;
+    height: 619px;
+  }
+  
+  .landing-main-container > .landing-btn {
+    width: 50%;
+    height: 369px;
+    background-color: red;
+    text-align: center;
+    padding-top: 250px;
+    float: right;
+  }

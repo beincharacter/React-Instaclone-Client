@@ -1,0 +1,83 @@
+import { ImageUpload } from 'cloudinary-react';
+
+function MyApp() {
+  const [imageUrl, setImageUrl] = useState('');
+
+  const handleImageUpload = (error, result) => {
+    if (error) {
+      console.error(error);
+    } else {
+      setImageUrl(result.secure_url);
+    }
+  };
+
+  return (
+    <div>
+      <ImageUpload
+        cloudName="your-cloud-name"
+        apiKey="your-api-key"
+        onChange={handleImageUpload}
+      />
+      {imageUrl && <img src={imageUrl} alt="uploaded image" />}
+    </div>
+  );
+}
+
+
+/**********/************/************/************/***********/**********/
+
+
+import React, { useState } from 'react';
+import axios from 'axios';
+
+const CreatePostForm = () => {
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [location, setLocation] = useState('');
+  const [image, setImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Use the Cloudinary API to upload the image
+    const cloudinaryUrl = 'https://api.cloudinary.com/v1_1/doh91aq3h/image/upload';
+    const formData = new FormData();
+    formData.append('file', image);
+    formData.append('upload_preset', 'ml_default');
+    try {
+      const res = await axios.post(cloudinaryUrl, formData);
+      setImageUrl(res.data.secure_url);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Name:
+        <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
+      </label>
+      <br />
+      <label>
+        Description:
+        <input type="text" value={description} onChange={(event) => setDescription(event.target.value)} />
+      </label>
+      <br />
+      <label>
+        Location:
+        <input type="text" value={location} onChange={(event) => setLocation(event.target.value)} />
+      </label>
+      <br />
+      <label>
+        Image:
+        <input type="file" onChange={(event) => setImage(event.target.files[0])} />
+      </label>
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
+
+export default CreatePostForm;

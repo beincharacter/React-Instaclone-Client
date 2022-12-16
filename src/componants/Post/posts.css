@@ -1,0 +1,13 @@
+body{
+    background-color: lightsteelblue;
+}
+
+.posts-main-container {
+    margin: 0px 300px 0px;
+    padding: 30px 0px 0px 225px;
+}
+
+button {
+    width: 200px;
+    margin-left: 25px;
+}
