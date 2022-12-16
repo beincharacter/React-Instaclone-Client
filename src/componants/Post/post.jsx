@@ -12,65 +12,32 @@ const CreatePostForm = () => {
   const [author, setName] = useState('');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
-  const [image, setImage] = useState(null);
-  const [postimage, setImageUrl] = useState('');
-  let img;
+  const [postimage, setImage] = useState(null);
   
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     
-    const cloudinaryUrl = 'https://api.cloudinary.com/v1_1/doh91aq3h/image/upload';
     const formData = new FormData();
     formData.append('author', author);
     formData.append('location', location);
     formData.append('description', description);
-    formData.append('file', image);
-    formData.append('upload_preset', 'htrt9fqi');
+    formData.append('postimage', postimage);
 
-    try {
-      const res = await axios.post(cloudinaryUrl, formData);
-      setImageUrl(res.data.url);
-      img=res.data.secure_url;
-
-    } catch (err) {
-      console.error(err);
-    }
-
-    formData.append("postimage", postimage);
-
-
-    // post to nodeJsAPI
-    const data = { author, description, location, postimage };
-    console.log(data)
-    // console.log(formData)
-  
-    axios.post('https://node-instacloneserver.onrender.com/posts', 
-      // method: 'POST',
-      // headers: {
-      //   'Content-Type': 'application/json',
-      //   'mode': 'no-cors'
-      // },
-      // body: JSON.stringify(data)
-      data
-    )
-     
-      .then(response => {
-        console.log(response);
-        navigate("/postviews")
-      }).catch((err)=>{
-        console.log(`err--->${err}`)
+    fetch('http://localhost:8081/posts', {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
       });
+
+      navigate("/postviews")
 
   };
     
-    
- 
-
-
-//   console.log(imageUrl)
-
   return (
     <>
         <Header_post />
