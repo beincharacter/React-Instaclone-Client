@@ -6,7 +6,7 @@ export default function Postview() {
 
     const [userdata,setUserData]=useState([]);
 
-     useEffect(() => {
+     //useEffect(() => {
     fetch("https://node-instacloneserver.onrender.com/posts" , {method:"GET"})
       .then((res) => res.json())
       .then((data) => {
@@ -17,7 +17,7 @@ export default function Postview() {
           console.log(err);
         }
       });
-  }, [userdata]);
+  //}, [userdata]);
     
 
   return (
