@@ -1,5 +1,5 @@
 .postview-main-container {
-    margin: 0px 300px 0px;
+    margin: 0px 25% 0px;
     border: 1px solid grey;
     background-color: rgb(195, 213, 213);
   }
@@ -9,7 +9,7 @@
   }
   
   .padding {
-    padding: 2px 8px;
+    padding: .2em .4em;
   }
   
   .bolder {
@@ -23,10 +23,11 @@
 
 
   .card {
-    margin-bottom: 35px;
+    /* margin-bottom: 35px;
     margin-left: 150px;
     margin-right: 150px;
-    padding-bottom: 10px;
+    padding-bottom: 10px; */
+    margin: 2% 15% 4% 15%;
   }
   
   .dots-container {
@@ -50,5 +51,6 @@
   }
   
   .like-icon {
-    margin-right: 5px;
+    margin-right: .5em;
+    /* background-color: brown; */
   }
