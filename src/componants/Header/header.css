@@ -1,13 +1,13 @@
 .header-main-container {
-    margin: 10px 300px 0px;
+    margin: 10px 25% 0px;
     border: 1px solid grey;
     background-color: rgb(195, 213, 213);
 }
 
 .header {
-    height: 30px;
+    height: 3vh;
     /* margin: 0 0 10px; */
-    padding: 5px 15px;
+    padding: 1em 1em;
     background-color: rgb(171, 230, 230);
   }
   
